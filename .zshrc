@@ -156,4 +156,4 @@ git config --global alias.aacp '!f() { git add . && git commit -m "$1" && git pu
 export JDTLS_JVM_ARGS="-javaagent:$HOME/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar"
 
 #Use the trash for deleting files 
-#alias rm="trash"
+alias rm="trash"
