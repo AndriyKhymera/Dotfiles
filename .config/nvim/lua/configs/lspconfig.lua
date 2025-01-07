@@ -22,3 +22,5 @@ end
 --   on_init = nvlsp.on_init,
 --   capabilities = nvlsp.capabilities,
 -- }
+--
+require'lspconfig'.bashls.setup{}

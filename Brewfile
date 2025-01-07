@@ -18,6 +18,7 @@ brew "fzf"
 brew "jdtls"
 brew "lua"
 brew "lua-language-server"
+brew bash-language-server
 brew "maven"
 brew "neovim"
 brew "powerlevel10k"
