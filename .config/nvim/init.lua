@@ -1,3 +1,7 @@
+-- Update the path for lua to find rocks
+-- This is one default set by luarocks
+package.path = package.path .. ";/Users/andriikhymera/.luarocks/share/lua/5.1/?.lua"
+
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
