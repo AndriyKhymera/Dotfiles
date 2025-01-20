@@ -1,17 +1,28 @@
+-- Helper function for creating keymaps
+local function nnoremap(rhs, lhs, bufopts, desc)
+  bufopts.desc = desc
+  vim.keymap.set("n", rhs, lhs, bufopts)
+end
+
 return {
       "mfussenegger/nvim-jdtls",
       ft = "java",
       config = function()
         local on_attach = function(client, bufnr)
-          -- require("plugins.configs.lspconfig").on_attach(client, bufnr)
+          require("nvchad.configs.lspconfig").on_attach(client, bufnr)
+
+          local bufopts = { noremap=true, silent=true, buffer=bufnr }
+          nnoremap('gD', vim.lsp.buf.declaration, bufopts, "Go to declaration")
+          nnoremap('gd', vim.lsp.buf.definition, bufopts, "Go to definition")
+          nnoremap('K', vim.lsp.buf.hover, bufopts, "Hover text")
         end
 
         -- local capabilities = require("plugins.configs.lspconfig").capabilities
-        local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+        -- local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
         -- calculate workspace dir
-        local workspace_dir = vim.fn.stdpath "data" .. "/site/java/workspace-root/" .. project_name
+        -- local workspace_dir = vim.fn.stdpath "data" .. "/site/java/workspace-root/" .. project_name
         -- get the mason install path
-        local install_path = require("mason-registry").get_package("jdtls"):get_install_path()
+        -- local install_path = require("mason-registry").get_package("jdtls"):get_install_path()
         -- get the debug adapter install path
         -- local debug_install_path = require("mason-registry").get_package("java-debug-adapter"):get_install_path()
         -- local bundles = {
