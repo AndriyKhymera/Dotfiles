@@ -157,3 +157,9 @@ export JDTLS_JVM_ARGS="-javaagent:$HOME/.m2/repository/org/projectlombok/lombok/
 
 #Use the trash for deleting files 
 alias rm="trash"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/andriikhymera/PhD/Dosyn/lab2/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/andriikhymera/PhD/Dosyn/lab2/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/andriikhymera/PhD/Dosyn/lab2/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/andriikhymera/PhD/Dosyn/lab2/google-cloud-sdk/completion.zsh.inc'; fi
