@@ -16,13 +16,5 @@ return {
     -- load_extension, somewhere after setup function:
     require('telescope').load_extension('fzf')
 
-    -- Add a keymap for Telescope projects
-    vim.api.nvim_set_keymap(
-      "n",
-      "<leader>pr",
-      "<cmd>Telescope projects<cr>",
-      { noremap = true, silent = true, desc = "Find projects" }
-    )
-
   end
 }
