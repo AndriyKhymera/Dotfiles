@@ -1,6 +1,6 @@
 return{
   "ahmedkhalf/project.nvim",
-  lazy = true,
+  lazy = false,
   dependencies = {"nvim-telescope/telescope.nvim", "nvim-tree/nvim-tree.lua"},
   keys = { -- Lazy-load on <leader>pr keypress
         {
