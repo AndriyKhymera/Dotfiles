@@ -12,3 +12,6 @@ map("i", "jk", "<ESC>")
 --nvim-cmp arrow keys mapping in sugessions. From some reason these doesn't work by defoult. Maybe there is some conflict, but imap doesn't show anything
 map('i', '<Up>', require('cmp').mapping.select_prev_item())
 map('i', '<Down>',require('cmp').mapping.select_next_item())
+
+
+map('n', '<leader>bo', ':%bd|e#|bd#<CR>', { noremap = true, silent = true })
