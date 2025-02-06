@@ -17,7 +17,6 @@ return {
           nnoremap('K', vim.lsp.buf.hover, bufopts, "Hover text")
         end
 
-        -- local capabilities = require("plugins.configs.lspconfig").capabilities
         -- local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
         -- calculate workspace dir
         -- local workspace_dir = vim.fn.stdpath "data" .. "/site/java/workspace-root/" .. project_name
@@ -25,9 +24,10 @@ return {
         -- local install_path = require("mason-registry").get_package("jdtls"):get_install_path()
         -- get the debug adapter install path
         -- local debug_install_path = require("mason-registry").get_package("java-debug-adapter"):get_install_path()
-        -- local bundles = {
-        --   vim.fn.glob(debug_install_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar", 1),
-        -- }
+        local debug_adapater_path = "/Users/andriikhymera/PersonalProject/java-debug/com.microsoft.java.debug.plugin/target"
+        local bundles = {
+          vim.fn.glob(debug_adapater_path .. "/com.microsoft.java.debug.plugin-*.jar", 1),
+        }
 
         -- Comment out these lines if you have 'java-test' installed
         -- local java_test_path = require("mason-registry").get_package("java-test"):get_install_path()
@@ -52,25 +52,26 @@ return {
             -- workspace_dir,
           },
           on_attach = on_attach,
-          -- capabilities = capabilities,
+          -- capabilities = require("plugins.configs.lspconfig").capabilities,
           root_dir = vim.fs.dirname(
             vim.fs.find({ ".gradlew", ".git", "mvnw", "pom.xml", "build.gradle" }, { upward = true })[1]
           ),
           settings = {
             java = {
               signatureHelp = { enabled = true },
-            },
+            }
+          },
+          init_options = {
+            bundles = bundles
           }
-          -- },
-          -- init_options = {
-          --   bundles = bundles,
-          -- },
         }
+
         vim.api.nvim_create_autocmd("FileType", {
           pattern = "java",
           callback = function()
             require("jdtls").start_or_attach(config)
           end,
         })
+
       end,
 }
