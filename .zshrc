@@ -163,3 +163,10 @@ if [ -f '/Users/andriikhymera/PhD/Dosyn/lab2/google-cloud-sdk/path.zsh.inc' ]; t
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/andriikhymera/PhD/Dosyn/lab2/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/andriikhymera/PhD/Dosyn/lab2/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Created by `pipx` on 2025-03-06 10:36:40
+export PATH="$PATH:/Users/andriikhymera/.local/bin"
+
+# Make sure awsume works properly
+# https://awsu.me/troubleshooting/
+alias awsume='. awsume'
