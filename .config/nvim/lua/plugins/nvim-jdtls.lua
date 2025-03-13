@@ -15,6 +15,9 @@ return {
           nnoremap('gD', vim.lsp.buf.declaration, bufopts, "Go to declaration")
           nnoremap('gd', vim.lsp.buf.definition, bufopts, "Go to definition")
           nnoremap('K', vim.lsp.buf.hover, bufopts, "Hover text")
+          -- nnoremap("<leader>vc", jdtls.test_class, bufopts, "Test class (DAP)")
+          -- nnoremap("<leader>vm", jdtls.test_nearest_method, bufopts, "Test method (DAP)")
+
         end
 
         -- local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
@@ -26,12 +29,17 @@ return {
         -- local debug_install_path = require("mason-registry").get_package("java-debug-adapter"):get_install_path()
         local debug_adapater_path = "/Users/andriikhymera/PersonalProject/java-debug/com.microsoft.java.debug.plugin/target"
         local bundles = {
-          vim.fn.glob(debug_adapater_path .. "/com.microsoft.java.debug.plugin-*.jar", 1),
+          vim.fn.glob(debug_adapater_path .. "/com.microsoft.java.debug.plugin-*.jar")
         }
 
         -- Comment out these lines if you have 'java-test' installed
         -- local java_test_path = require("mason-registry").get_package("java-test"):get_install_path()
         -- vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. "/extension/server/*.jar", 1), "\n"))
+        local vscode_java_test_path="/Users/andriikhymera/PersonalProject/vscode-java-test/"
+        vim.list_extend(bundles, vim.split(vim.fn.glob(vscode_java_test_path .. "server/com.microsoft.java.test.plugin*.jar"), "\n"))
+        vim.list_extend(bundles, vim.split(vim.fn.glob(vscode_java_test_path .. "java-extension/com.microsoft.java.test.plugin/target/*.jar"), "\n"))
+        vim.list_extend(bundles, vim.split(vim.fn.glob(vscode_java_test_path .. "java-extension/com.microsoft.java.test.runner/target/*.jar"), "\n"))
+
 
         local config = {
           cmd = {
