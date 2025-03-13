@@ -7,6 +7,7 @@ return {
   },
   config = function()
     require("nvim-tree").setup {
+      sync_root_with_cwd = true,
       update_focused_file = {
         enable = true,
         update_root = true
@@ -14,6 +15,9 @@ return {
       view = {
         -- adapath the width of the window according to file name
         adaptive_size = true
+      },
+      filters = {
+        git_ignored = false
       }
     }
   end
