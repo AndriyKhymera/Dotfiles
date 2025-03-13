@@ -6,6 +6,7 @@ return{
     -- add any options here
   },
   dependencies = {
+    "mistweaverco/uzuri.nvim",  -- Ensures uzuri loads first
     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
     "MunifTanjim/nui.nvim",
     -- OPTIONAL:
