@@ -16,7 +16,7 @@ return{
     require("project_nvim").setup {
       show_hidden = true,
       detection_methods = { "pattern" },
-      patterns = { ".git", ".project"}
+      patterns = { ".git" }
     }
     require('telescope').load_extension('projects')
 
