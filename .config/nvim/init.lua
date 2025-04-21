@@ -40,4 +40,4 @@ vim.schedule(function()
   require "mappings"
 end)
 
-require('overseer').setup()
+-- require('overseer').setup()

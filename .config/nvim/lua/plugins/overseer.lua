@@ -3,9 +3,12 @@ return {
 
   config = function()
     require("overseer").setup({
-      templates = { "builtin", "make" },
-      task_dirs = { ".", ".idea" }
+      templates     = { "builtin", "make" , "idea_make"}
     })
-  end
+  end,
 
+  keys = {
+    { "<leader>or", "<cmd>OverseerRun<cr>", desc = "OverseerRun" },
+    { "<leader>ot", "<cmd>OverseerToggle<cr>", desc = "OverseerToggle" },
+  }
 }
