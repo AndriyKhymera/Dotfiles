@@ -39,12 +39,15 @@ return {
         vim.list_extend(bundles, vim.split(vim.fn.glob(vscode_java_test_path .. "server/com.microsoft.java.test.plugin*.jar"), "\n"))
         vim.list_extend(bundles, vim.split(vim.fn.glob(vscode_java_test_path .. "java-extension/com.microsoft.java.test.plugin/target/*.jar"), "\n"))
         vim.list_extend(bundles, vim.split(vim.fn.glob(vscode_java_test_path .. "java-extension/com.microsoft.java.test.runner/target/*.jar"), "\n"))
-
+                                                  -- ~/.dotfiles/.config/nvim/bin/jdtls-with-jdk21.sh
+        local jdtls_start_script_path=vim.fn.expand("~/.dotfiles/.config/nvim/bin/jdtls-with-jdk21.sh")
+        -- local jdtls_start_script_path=vim.fn.expand("~/.dotfiles/.config/nvim/bin/default.sh")
+        local lombok_path = vim.fn.expand("~/.m2/repository/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar")
 
         local config = {
           cmd = {
-            "/opt/homebrew/bin/jdtls",
-            "--jvm-arg=-javaagent:/Users/andriikhymera/.m2/repository/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar",
+            jdtls_start_script_path,
+            "--jvm-arg=-javaagent:" .. lombok_path,
             -- "-Declipse.application=org.eclipse.jdt.ls.core.id1",
             -- "-Dosgi.bundles.defaultStartLevel=4",
             -- "-Declipse.product=org.eclipse.jdt.ls.core.product",
