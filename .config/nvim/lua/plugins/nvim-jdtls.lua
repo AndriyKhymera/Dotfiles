@@ -1,4 +1,7 @@
+-- Normal mode, Non-recursive mapping
 -- Helper function for creating keymaps
+-- lhs - left-hand side   - the trigger key(s)
+-- rhs - right-hand side  - the action
 local function nnoremap(rhs, lhs, bufopts, desc)
   bufopts.desc = desc
   vim.keymap.set("n", rhs, lhs, bufopts)
@@ -14,6 +17,7 @@ return {
           local bufopts = { noremap=true, silent=true, buffer=bufnr }
           nnoremap('gD', vim.lsp.buf.declaration, bufopts, "Go to declaration")
           nnoremap('gd', vim.lsp.buf.definition, bufopts, "Go to definition")
+          nnoremap("gr", require('telescope.builtin').lsp_references, bufopts, "Get lsp_references")
           nnoremap('K', vim.lsp.buf.hover, bufopts, "Hover text")
           -- nnoremap("<leader>vc", jdtls.test_class, bufopts, "Test class (DAP)")
           -- nnoremap("<leader>vm", jdtls.test_nearest_method, bufopts, "Test method (DAP)")
