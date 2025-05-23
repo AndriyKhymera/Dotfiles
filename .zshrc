@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -110,28 +114,27 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+#Use the trash for deleting files 
+alias rm="trash"
+alias ll=lsa
+
+git config --global alias.aacp '!f() { git add . && git commit -m "$1" && git push; }; f'
+
+# Make sure awsume works properly
+# https://awsu.me/troubleshooting/
+alias awsume='. awsume'
 export EDITOR=vim
+
+# K8s
 [ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
-export KUBECONFIG=$HOME/.kube/kubeconfig.users.yaml
-export KUBECONFIG=$KUBECONFIG:$HOME/.kube/kubeconfig.borg.yaml
-export KUBECONFIG=$KUBECONFIG:$HOME/.kube/kubeconfig.borgcn.yaml
-export KUBECONFIG=$KUBECONFIG:$HOME/.kube/kubeconfig.tvts.yaml
-export KUBECONFIG=$KUBECONFIG:$HOME/.kube/kubeconfig.tvtscn.yaml
-export KUBECONFIG=$KUBECONFIG:$HOME/.kube/kubeconfig.tvtskr.yaml
-export KUBECONFIG=$KUBECONFIG:$HOME/.kube/kubeconfig.trasa.yaml
-export KUBECONFIG=$KUBECONFIG:$HOME/.kube/kubeconfig.trts.yaml
-export KUBECONFIG=$KUBECONFIG:$HOME/.kube/kubeconfig.trafficdb.yaml
-export KUBECONFIG=$KUBECONFIG:$HOME/.kube/kubeconfig.mqtt.poc.yaml
-export KUBECONFIG=$KUBECONFIG:$HOME/.kube/kubeconfig.minikube.yaml
-export KUBECONFIG=$KUBECONFIG:$HOME/.kube/kubeconfig.tdakr.yaml
-
-
 source <(kubectl completion zsh)
-alias k=kubectl
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+KUBECONFIG=${KUBECONFIG:-}
+for kubeconfig_file in $HOME/.kube/kubeconfig*.yaml; do
+  KUBECONFIG=$KUBECONFIG:$kubeconfig_file:
+done
+export KUBECONFIG
+
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -148,15 +151,7 @@ eval "$(direnv hook zsh)"
 # Path to Rust executables
 export PATH=~/.cargo/bin:$PATH
 
-alias ll=lsa
-
-git config --global alias.aacp '!f() { git add . && git commit -m "$1" && git push; }; f'
-
-
 export JDTLS_JVM_ARGS="-javaagent:$HOME/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar"
-
-#Use the trash for deleting files 
-alias rm="trash"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/andriikhymera/PhD/Dosyn/lab2/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/andriikhymera/PhD/Dosyn/lab2/google-cloud-sdk/path.zsh.inc'; fi
@@ -166,7 +161,3 @@ if [ -f '/Users/andriikhymera/PhD/Dosyn/lab2/google-cloud-sdk/completion.zsh.inc
 
 # Created by `pipx` on 2025-03-06 10:36:40
 export PATH="$PATH:/Users/andriikhymera/.local/bin"
-
-# Make sure awsume works properly
-# https://awsu.me/troubleshooting/
-alias awsume='. awsume'
