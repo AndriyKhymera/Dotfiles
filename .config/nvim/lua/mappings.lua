@@ -13,5 +13,8 @@ map("i", "jk", "<ESC>")
 map('i', '<Up>', require('cmp').mapping.select_prev_item())
 map('i', '<Down>',require('cmp').mapping.select_next_item())
 
-
 map('n', '<leader>bo', ':%bd|e#|bd#<CR>', { noremap = true, silent = true })
+
+-- Normal mode: move current line
+map("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
+map("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
