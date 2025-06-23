@@ -18,3 +18,8 @@ map('n', '<leader>bo', ':%bd|e#|bd#<CR>', { noremap = true, silent = true })
 -- Normal mode: move current line
 map("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
 map("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
+
+
+map("n", "<leader>rn", function()
+  vim.opt.relativenumber = not vim.opt.relativenumber:get()
+end, { desc = "Toggle Relative Numbers" })
