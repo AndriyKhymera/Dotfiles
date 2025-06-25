@@ -23,3 +23,5 @@ map("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
 map("n", "<leader>rn", function()
   vim.opt.relativenumber = not vim.opt.relativenumber:get()
 end, { desc = "Toggle Relative Numbers" })
+
+map("n", "pp", ':put<CR>', {noremap = true})
