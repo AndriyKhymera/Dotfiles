@@ -15,6 +15,7 @@ return {
           require("nvchad.configs.lspconfig").on_attach(client, bufnr)
 
           local bufopts = { noremap=true, silent=true, buffer=bufnr }
+          nnoremap('<leader>ca', vim.lsp.buf.code_action, bufopts, "Code actions")
           nnoremap('gD', vim.lsp.buf.declaration, bufopts, "Go to declaration")
           nnoremap('gd', vim.lsp.buf.definition, bufopts, "Go to definition")
           nnoremap("gr", require('telescope.builtin').lsp_references, bufopts, "Get lsp_references")
