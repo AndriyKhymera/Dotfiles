@@ -115,7 +115,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #Use the trash for deleting files 
-# alias rm="trash"
+# Only alias `rm` if the shell is interactive
+if [[ $- == *i* ]]; then
+  alias rm="trash"
+fi
 alias ll=lsa
 
 git config --global alias.aacp '!f() { git add . && git commit -m "$1" && git push; }; f'
