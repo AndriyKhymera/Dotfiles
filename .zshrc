@@ -115,7 +115,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #Use the trash for deleting files 
-alias rm="trash"
+# alias rm="trash"
 alias ll=lsa
 
 git config --global alias.aacp '!f() { git add . && git commit -m "$1" && git push; }; f'
@@ -161,3 +161,7 @@ if [ -f '/Users/andriikhymera/PhD/Dosyn/lab2/google-cloud-sdk/completion.zsh.inc
 
 # Created by `pipx` on 2025-03-06 10:36:40
 export PATH="$PATH:/Users/andriikhymera/.local/bin"
+
+# Add JBang to environment
+alias j!=jbang
+export PATH="$HOME/.jbang/bin:$PATH"
