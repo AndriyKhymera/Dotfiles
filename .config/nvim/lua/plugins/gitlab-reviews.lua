@@ -4,10 +4,10 @@ return {
     "MunifTanjim/nui.nvim",
     "nvim-lua/plenary.nvim",
     "sindrets/diffview.nvim",
-    "stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
-    "nvim-tree/nvim-web-devicons", -- Recommended but not required. Icons in discussion tree.
+    "stevearc/dressing.nvim",                                   -- Recommended but not required. Better UI for pickers.
+    "nvim-tree/nvim-web-devicons",                              -- Recommended but not required. Icons in discussion tree.
   },
-  build = function () require("gitlab.server").build(true) end, -- Builds the Go binary
+  build = function() require("gitlab.server").build(true) end,  -- Builds the Go binary
   config = function()
     require("gitlab").setup()
   end,
@@ -15,14 +15,14 @@ return {
     {
       "<leader>glr",
       function()
-          require("gitlab").review()
+        require("gitlab").review()
       end,
       desc = "Open gitlab review"
     },
     {
       "<leader>glr",
       function()
-          require("gitlab").choose_merge_request()
+        require("gitlab").choose_merge_request()
       end,
       desc = "Open gitlab review"
     }

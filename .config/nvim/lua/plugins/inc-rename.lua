@@ -5,7 +5,7 @@ return {
     require("inc_rename").setup()
   end,
   keys = {
-    -- Shift + F6 
+    -- Shift + F6
     { "<80>F8", ":IncRename", desc = "IncRename" }
   }
 }
