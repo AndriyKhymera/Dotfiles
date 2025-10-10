@@ -168,3 +168,7 @@ export PATH="$PATH:/Users/andriikhymera/.local/bin"
 # Add JBang to environment
 alias j!=jbang
 export PATH="$HOME/.jbang/bin:$PATH"
+
+#Secrets
+export GITLAB_TOKEN_SECRET_PATH=".secrets/gitlab-token.env"
+[ -f "$HOME/$GITLAB_TOKEN_SECRET_PATH" ] && source "$HOME/$GITLAB_TOKEN_SECRET_PATH"
