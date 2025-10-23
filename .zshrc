@@ -116,9 +116,9 @@ source $ZSH/oh-my-zsh.sh
 
 #Use the trash for deleting files 
 # Only alias `rm` if the shell is interactive
-if [[ $- == *i* ]]; then
-  alias rm="trash"
-fi
+# if [[ $- == *i* ]]; then
+#   alias rm="trash"
+# fi
 alias ll=lsa
 
 git config --global alias.aacp '!f() { git add . && git commit -m "$1" && git push; }; f'
@@ -172,3 +172,5 @@ export PATH="$HOME/.jbang/bin:$PATH"
 #Secrets
 export GITLAB_TOKEN_SECRET_PATH=".secrets/gitlab-token.env"
 [ -f "$HOME/$GITLAB_TOKEN_SECRET_PATH" ] && source "$HOME/$GITLAB_TOKEN_SECRET_PATH"
+export PLATFORM_REPO_SECRET_PATH=".secrets/platform-repo.env"
+[ -f "$HOME/$PLATFORM_REPO_SECRET_PATH" ] && source "$HOME/$PLATFORM_REPO_SECRET_PATH"
