@@ -2,6 +2,7 @@ return {
   'https://gitlab.com/gitlab-org/editor-extensions/gitlab.vim.git',
   -- Activate when a file is created/opened
 
+  enabled = false,
   event = { 'BufReadPre', 'BufNewFile' },
   -- Activate when a supported filetype is open
   ft = { 'go', 'javascript', 'python', 'ruby' },
