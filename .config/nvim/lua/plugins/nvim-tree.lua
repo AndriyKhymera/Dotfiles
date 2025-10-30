@@ -7,16 +7,20 @@ return {
   },
   config = function()
     local function on_attach(bufnr)
-        local api = require("nvim-tree.api")
+      local api = require("nvim-tree.api")
 
-        local function telescope_grep_in_dir()
-          local node = api.tree.get_node_under_cursor()
-          local path = node and node.absolute_path or vim.fn.getcwd()
-          require("telescope.builtin").live_grep({ search_dirs = { path } })
-        end
+      local function telescope_grep_in_dir()
+        local node = api.tree.get_node_under_cursor()
+        local path = node and node.absolute_path or vim.fn.getcwd()
+        require("telescope.builtin").live_grep({ search_dirs = { path } })
+      end
 
-        vim.keymap.set("n", "<leader>fi", telescope_grep_in_dir,
-          { desc = "Live grep in folder", buffer = bufnr, noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>fi", telescope_grep_in_dir,
+        { desc = "Live grep in folder", buffer = bufnr, noremap = true, silent = true })
+
+      vim.keymap.set('n', '<leader>tr', function()
+        require("nvim-tree.api").tree.reload()
+      end, { desc = "Reload nvim-tree" })
     end
 
     require("nvim-tree").setup {
