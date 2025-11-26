@@ -138,8 +138,6 @@ for kubeconfig_file in $HOME/.kube/kubeconfig*.yaml; do
 done
 export KUBECONFIG
 
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
@@ -174,3 +172,7 @@ export GITLAB_TOKEN_SECRET_PATH=".secrets/gitlab-token.env"
 [ -f "$HOME/$GITLAB_TOKEN_SECRET_PATH" ] && source "$HOME/$GITLAB_TOKEN_SECRET_PATH"
 export PLATFORM_REPO_SECRET_PATH=".secrets/platform-repo.env"
 [ -f "$HOME/$PLATFORM_REPO_SECRET_PATH" ] && source "$HOME/$PLATFORM_REPO_SECRET_PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
