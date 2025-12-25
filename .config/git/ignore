@@ -1,0 +1,17 @@
+# Neovim
+.nvim/
+.nvimrc
+.lua-language-server/
+.jdtls/
+*.log
+Makefile
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+#Github
+.github/
+
+

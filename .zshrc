@@ -83,6 +83,8 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+export GIT_CONFIG_GLOBAL="$HOME/.config/git/config"
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -121,7 +123,6 @@ source $ZSH/oh-my-zsh.sh
 # fi
 alias ll=lsa
 
-git config --global alias.aacp '!f() { git add . && git commit -m "$1" && git push; }; f'
 
 # Make sure awsume works properly
 # https://awsu.me/troubleshooting/
