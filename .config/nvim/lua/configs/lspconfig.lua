@@ -1,26 +1,22 @@
--- load defaults i.e lua_lsp
-require("nvchad.configs.lspconfig").defaults()
+-- Load NvChad defaults (lua_ls, keymaps, etc.)
+local nvlsp = require("nvchad.configs.lspconfig")
+nvlsp.defaults()
 
-local lspconfig = require "lspconfig"
+-- Common options reused across servers
+local common = {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+}
 
--- EXAMPLE
-local servers = { "html", "cssls" }
-local nvlsp = require "nvchad.configs.lspconfig"
+-- Declarative server configs
+vim.lsp.config.html = common
+vim.lsp.config.cssls = common
+vim.lsp.config.bashls = common
 
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = nvlsp.on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
-  }
-end
-
--- configuring single server, example: typescript
--- lspconfig.ts_ls.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
--- }
---
-require'lspconfig'.bashls.setup{}
+-- Enable servers
+vim.lsp.enable {
+  "html",
+  "cssls",
+  "bashls",
+}
