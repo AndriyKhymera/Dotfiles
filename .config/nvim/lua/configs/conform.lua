@@ -14,6 +14,16 @@ local options = {
       stdin = true,
     },
   },
+  keys = {
+    {
+      "<leader>fr",
+      function()
+        require("conform").format({ async = true })
+      end,
+      mode = { "n" },
+      desc = "Conform: Format file"
+    }
+  },
 }
 
 return options
