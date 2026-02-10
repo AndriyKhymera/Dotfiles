@@ -41,6 +41,7 @@ brew "zsh-autosuggestions"
 brew "hashicorp/tap/vault"
 brew "heremaps/olp-cli/olp"
 brew "jesseduffield/lazygit/lazygit"
+brew "just"
 
 cask "maccy"
 cask "mqttx"

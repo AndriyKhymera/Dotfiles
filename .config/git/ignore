@@ -5,6 +5,7 @@
 .jdtls/
 *.log
 Makefile
+justfile
 
 # OS / editors
 .DS_Store
