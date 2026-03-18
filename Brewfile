@@ -3,6 +3,7 @@
 # to apply
 # brew bundle --file=Brewfile
 
+tap "derailed/k9s"
 tap "hashicorp/tap"
 tap "heremaps/olp-cli"
 tap "homebrew/bundle"
@@ -40,6 +41,7 @@ brew "hashicorp/tap/vault"
 brew "heremaps/olp-cli/olp"
 brew "jesseduffield/lazygit/lazygit"
 brew "just"
+brew "derailed/k9s/k9s"
 
 cask "maccy"
 cask "mqttx"
