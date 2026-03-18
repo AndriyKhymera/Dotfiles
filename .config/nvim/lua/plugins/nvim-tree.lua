@@ -18,7 +18,7 @@ return {
       vim.keymap.set("n", "<leader>fi", telescope_grep_in_dir,
         { desc = "Live grep in folder", buffer = bufnr, noremap = true, silent = true })
 
-      vim.keymap.set('n', '<leader>tr', function()
+      vim.keymap.set("n", "<leader>tr", function()
         require("nvim-tree.api").tree.reload()
       end, { desc = "Reload nvim-tree" })
     end
@@ -39,5 +39,5 @@ return {
         git_ignored = false
       },
     }
-  end
+  end,
 }

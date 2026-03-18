@@ -14,7 +14,7 @@ return {
       function()
         vim.lsp.buf.format()
       end,
-      desc = "Format current buffer"
-    }
-  }
+      desc = "Format current buffer",
+    },
+  },
 }

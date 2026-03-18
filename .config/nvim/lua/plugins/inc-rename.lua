@@ -6,6 +6,6 @@ return {
   end,
   keys = {
     -- Shift + F6
-    { "<80>F8", ":IncRename", desc = "IncRename" }
-  }
+    { "<80>F8", ":IncRename", desc = "IncRename" },
+  },
 }

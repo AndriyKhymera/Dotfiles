@@ -1,4 +1,4 @@
-return{
+return {
   "mfussenegger/nvim-dap",
   keys = {
     { "<leader>bp", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", desc = "Set breakpoint" }

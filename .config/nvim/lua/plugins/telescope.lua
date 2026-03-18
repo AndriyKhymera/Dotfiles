@@ -1,6 +1,9 @@
 return {
-  'nvim-telescope/telescope.nvim',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  "nvim-telescope/telescope.nvim",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  keys = {
+    { "<Leader>gt", false },
+  },
   config = function()
     require("telescope").setup({
       defaults = {
@@ -14,7 +17,7 @@ return {
           "--smart-case",
           "--hidden",         -- this includes hidden files
           "--no-ignore",      -- overrides .gitignore
-          "--glob=!**/.git/*" -- avoids noisy .git
+          "--glob=!**/.git/*", -- avoids noisy .git
         },
       },
       pickers = {
@@ -24,16 +27,13 @@ return {
             "fd",
             "--type", "f",
             "--hidden",
-            "--exclude", ".git"
-          }
+            "--exclude", ".git",
+          },
         },
       },
-      keys = {
-        { "<Leader>gt", false }
-      }
     })
     -- To get fzf loaded and working with telescope, you need to call
     -- load_extension, somewhere after setup function:
-    require('telescope').load_extension('fzf')
-  end
+    require("telescope").load_extension("fzf")
+  end,
 }

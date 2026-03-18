@@ -1,5 +1,5 @@
-# GitHub Copilot configuration for Neovim
-return{
+-- GitHub Copilot configuration for Neovim
+return {
   "github/copilot.vim",
   cmd = "Copilot",
 }

@@ -18,14 +18,14 @@ return {
       function()
         require("gitlab").review()
       end,
-      desc = "Open gitlab review"
+      desc = "Open gitlab review",
     },
     {
       "<leader>glr",
       function()
         require("gitlab").choose_merge_request()
       end,
-      desc = "Open gitlab review"
-    }
-  }
+      desc = "Open gitlab review",
+    },
+  },
 }

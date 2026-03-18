@@ -1,11 +1,11 @@
 return {
-  'https://gitlab.com/gitlab-org/editor-extensions/gitlab.vim.git',
+  "https://gitlab.com/gitlab-org/editor-extensions/gitlab.vim.git",
   -- Activate when a file is created/opened
 
   enabled = false,
-  event = { 'BufReadPre', 'BufNewFile' },
+  event = { "BufReadPre", "BufNewFile" },
   -- Activate when a supported filetype is open
-  ft = { 'go', 'javascript', 'python', 'ruby' },
+  ft = { "go", "javascript", "python", "ruby" },
   cond = function()
     -- Only activate if token is present in environment variable.
     -- Remove this line to use the interactive workflow.
@@ -18,8 +18,8 @@ return {
       "<Plug>(GitLabToggleCodeSuggestions)",
       mode = "n",
       noremap = false,
-      desc = "Toggle GitLab Code Suggestions"
-    }
+      desc = "Toggle GitLab Code Suggestions",
+    },
   },
 
   opts = {
