@@ -47,26 +47,32 @@ return {
                                                   -- ~/.dotfiles/.config/nvim/bin/jdtls-with-jdk21.sh
         local jdtls_start_script_path=vim.fn.expand("~/.dotfiles/.config/nvim/bin/jdtls-with-jdk21.sh")
         -- local jdtls_start_script_path=vim.fn.expand("~/.dotfiles/.config/nvim/bin/default.sh")
-        local lombok_path = vim.fn.expand("~/.m2/repository/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar")
+        local lombok_jars = vim.split(vim.fn.glob(vim.fn.expand("~/.m2/repository/org/projectlombok/lombok/*/lombok-*.jar")), "\n", { trimempty = true })
+        table.sort(lombok_jars)
+        local lombok_path = lombok_jars[#lombok_jars]
+
+        local lombok_arg = lombok_path and ("--jvm-arg=-javaagent:" .. lombok_path) or nil
+
+        local cmd = { jdtls_start_script_path }
+        if lombok_arg then
+          table.insert(cmd, lombok_arg)
+        end
 
         local config = {
-          cmd = {
-            jdtls_start_script_path,
-            "--jvm-arg=-javaagent:" .. lombok_path,
-            -- "-Declipse.application=org.eclipse.jdt.ls.core.id1",
-            -- "-Dosgi.bundles.defaultStartLevel=4",
-            -- "-Declipse.product=org.eclipse.jdt.ls.core.product",
-            -- "-Dlog.protocol=true",
-            -- "-Dlog.level=ALL",
-            -- "-Xms1g",
-            -- "--add-modules=ALL-SYSTEM",
-            -- "--add-opens",
-            -- "java.base/java.util=ALL-UNNAMED",
-            -- "--add-opens",
-            -- "java.base/java.lang=ALL-UNNAMED",
-            -- "-data",
-            -- workspace_dir,
-          },
+          cmd = cmd,
+          -- "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+          -- "-Dosgi.bundles.defaultStartLevel=4",
+          -- "-Declipse.product=org.eclipse.jdt.ls.core.product",
+          -- "-Dlog.protocol=true",
+          -- "-Dlog.level=ALL",
+          -- "-Xms1g",
+          -- "--add-modules=ALL-SYSTEM",
+          -- "--add-opens",
+          -- "java.base/java.util=ALL-UNNAMED",
+          -- "--add-opens",
+          -- "java.base/java.lang=ALL-UNNAMED",
+          -- "-data",
+          -- workspace_dir,
           on_attach = on_attach,
           -- capabilities = require("plugins.configs.lspconfig").capabilities,
           root_dir = vim.fs.dirname(

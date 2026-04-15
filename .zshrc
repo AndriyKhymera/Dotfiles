@@ -153,7 +153,7 @@ eval "$(direnv hook zsh)"
 # Path to Rust executables
 export PATH=~/.cargo/bin:$PATH
 
-export JDTLS_JVM_ARGS="-javaagent:$HOME/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar"
+export JDTLS_JVM_ARGS="-javaagent:$(echo $HOME/.m2/repository/org/projectlombok/lombok/*/lombok-*.jar | tr ' ' '\n' | tail -1)"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/andriikhymera/PhD/Dosyn/lab2/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/andriikhymera/PhD/Dosyn/lab2/google-cloud-sdk/path.zsh.inc'; fi
