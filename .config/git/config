@@ -1,7 +1,9 @@
 # This is Git's per-user configuration file.
 [user]
-name = Andrii Khymera
-email = andrii.khymera@gmail.com
+	name = Andrii Khymera
+
+[include]
+	path = ~/.config/git/config.local
 
 [alias]
 	aacp = "!f() { git add . && git commit -m \"$1\" && git push; }; f"
