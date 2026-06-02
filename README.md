@@ -3,10 +3,24 @@
 Personal macOS dotfiles and configuration files managed with [GNU Stow](https://www.gnu.org/software/stow/).
 Every file mirrors its target location relative to `$HOME`. Running `stow .` from the repo root creates symlinks in `~`.
 
-## Setup
+## Bootstrap
+
+Run `install.sh` to set up a new machine in one step:
 
 ```bash
-# Apply dotfiles (create symlinks)
+./install.sh
+```
+
+This will:
+1. Install Homebrew (if missing)
+2. Install all packages from `Brewfile`
+3. Install pipx packages from `pipx-packages.txt`
+4. Create all symlinks via `stow .`
+
+## Manual steps
+
+```bash
+# Apply dotfiles (create/update symlinks)
 stow .
 
 # Install all Homebrew packages
