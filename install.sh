@@ -22,4 +22,10 @@ fi
 echo "Creating symlinks..."
 stow --dir="$DOTFILES" --target="$HOME" .
 
+# ── iTerm2 ────────────────────────────────────────────────────────────────────
+echo "Configuring iTerm2 preferences..."
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$DOTFILES/Library/Preferences"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+defaults write com.googlecode.iterm2 NoSyncNeverRemindPrefsChangesLostForFile -bool true
+
 echo "Done."
