@@ -21,4 +21,5 @@ CLAUDE.md
 #Github
 .github/
 
-
+# SBT local override
+.sbtopts
