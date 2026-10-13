@@ -12,20 +12,27 @@ vim.api.nvim_create_autocmd("BufReadPre", {
     local size = vim.fn.getfsize(file)
     if size > 1000000 then  -- ~1MB
       vim.b.large_file = true
-      vim.cmd [[
-        syntax off
-        filetype off
-        setlocal noswapfile
-        setlocal noundofile
-        setlocal noloadplugins
-        setlocal foldmethod=manual
-      ]]
+      -- Set buffer-local options safely
+      vim.opt_local.swapfile = false
+      vim.opt_local.undofile = false
+      vim.opt_local.foldmethod = "manual"
+      -- Stop syntax and filetype matching ONLY for this specific buffer
+      vim.opt_local.syntax = ""
+      vim.opt_local.filetype = ""
+      -- Prevent event triggers like tree-sitter or plugins from attaching to this buffer
+      vim.api.nvim_create_autocmd("BufReadPost", {
+        buffer = 0,
+        once = true,
+        callback = function()
+          vim.cmd([[syntax clear]])
+        end
+      })
     end
   end
 })
+
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
-
 if not vim.uv.fs_stat(lazypath) then
   local repo = "https://github.com/folke/lazy.nvim.git"
   vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
